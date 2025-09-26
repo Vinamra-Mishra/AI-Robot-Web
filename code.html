@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code & Architecture - SARAR AI Robot</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container navbar">
+            <a href="./index.html" class="nav-logo">SARAR AI</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="./index.html" class="nav-link">Home</a></li>
+                    <li><a href="./features.html" class="nav-link">Features</a></li>
+                    <li><a href="./hardware.html" class="nav-link">Hardware</a></li>
+                    <li><a href="./code.html" class="nav-link active">Code</a></li>
+                </ul>
+            </nav>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="fade-in-section">
+                    <h1>Code & Architecture</h1>
+                    <p>The SARAR project is built on a modular and well-organized codebase, making it easy to understand, maintain, and extend. All core logic resides within the <code>src/</code> directory.</p>
+                </div>
+
+                <div class="fade-in-section">
+                    <h2>Project Structure</h2>
+                    <p>The file structure is designed to separate concerns, with distinct modules for hardware control, AI processing, and web interfaces.</p>
+                    <pre><code>ai-robot-4wd/
+├── src/                    # Core application & web files
+│   ├── static/             # CSS, JS, and images for the web UI
+│   ├── ai_processor.py     # Manages AI persona & client switching
+│   ├── command_processor.py# Handles voice and text command logic
+│   ├── motor_controller.py # Controls the robot's movement
+│   ├── web_server.py      # Flask web server
+│   ├── index.html          # Main informational webpage
+│   └── control.html        # Robot control dashboard page
+│
+├── Pages/                 # Static website for GitHub Pages
+├── Faces/                 # Images for the robot's facial expressions
+├── logs/                  # Activity and conversation logs
+├── models/                # AI models (Vosk and GGUF)
+├── main.py                # Main application entry point
+└── requirements.txt       # Python dependencies
+</code></pre>
+                </div>
+
+                <div class="fade-in-section">
+                    <h2>The AI Persona</h2>
+                    <p>To create an immersive experience, the AI is given a specific persona. This is achieved through a system prompt that is automatically added to the beginning of every conversation, ensuring the AI always acts like a physical robot, not a generic assistant.</p>
+                    
+                    <div class="card">
+                        <h3>System Prompt Directives</h3>
+                        <ul>
+                            <li><strong>Identity:</strong> It is SARAR, a physical, 4-wheeled robot.</li>
+                            <li><strong>Perspective:</strong> Its knowledge comes from its sensors and internal logs.</li>
+                            <li><strong>Behavior:</strong> It is concise, task-oriented, and never breaks character.</li>
+                            <li><strong>Constraints:</strong> It will NEVER identify as an AI, a language model, or a virtual assistant.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SARAR AI Project. Built for demonstration and learning.</p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

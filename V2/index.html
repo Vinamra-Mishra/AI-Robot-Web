@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered 4-Wheel Drive Robot | Advanced Robotics Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'aero-dark': '#0f1419',
+                        'aero-secondary': '#1a2332',
+                        'aero-accent': '#00d4ff',
+                        'aero-blue': '#0099cc',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-aero-dark text-white overflow-x-hidden">
+    <!-- Navigation Header -->
+    <nav class="fixed top-0 w-full bg-aero-dark/90 backdrop-blur-md z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-aero-accent">
+                    <i class="fas fa-robot mr-2"></i>AI Robot
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-aero-accent transition-colors duration-300">Home</a>
+                    <a href="#architecture" class="nav-link text-white hover:text-aero-accent transition-colors duration-300">Architecture</a>
+                    <a href="#features" class="nav-link text-white hover:text-aero-accent transition-colors duration-300">Features</a>
+                    <a href="#specs" class="nav-link text-white hover:text-aero-accent transition-colors duration-300">Tech Specs</a>
+                    <a href="#gallery" class="nav-link text-white hover:text-aero-accent transition-colors duration-300">Gallery</a>
+                    <a href="#about" class="nav-link text-white hover:text-aero-accent transition-colors duration-300">About</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <a href="https://github.com/username/ai-robot-project" target="_blank" 
+                       class="github-btn bg-aero-accent text-aero-dark px-4 py-2 rounded-lg font-medium hover:bg-aero-blue transition-colors duration-300">
+                        <i class="fab fa-github mr-2"></i>GitHub
+                    </a>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-white focus:outline-none" id="mobile-menu-btn">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="md:hidden mt-4 hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-2 pb-4">
+                    <a href="#home" class="nav-link text-white hover:text-aero-accent py-2">Home</a>
+                    <a href="#architecture" class="nav-link text-white hover:text-aero-accent py-2">Architecture</a>
+                    <a href="#features" class="nav-link text-white hover:text-aero-accent py-2">Features</a>
+                    <a href="#specs" class="nav-link text-white hover:text-aero-accent py-2">Tech Specs</a>
+                    <a href="#gallery" class="nav-link text-white hover:text-aero-accent py-2">Gallery</a>
+                    <a href="#about" class="nav-link text-white hover:text-aero-accent py-2">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-aero-dark via-aero-secondary to-aero-dark"></div>
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-20 left-20 w-72 h-72 bg-aero-accent/10 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 right-20 w-96 h-96 bg-aero-blue/10 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-slide-up">
+                    <span class="bg-gradient-to-r from-aero-accent to-aero-blue bg-clip-text text-transparent">
+                        AI-Powered
+                    </span>
+                    <br>
+                    <span class="text-white">Raspberry Pi Robot</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed animate-fade-in" style="animation-delay: 0.3s;">
+                    A modular, interactive robotic platform combining voice interaction, 
+                    autonomous navigation, and visual feedback with comprehensive AI integration.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in" style="animation-delay: 0.6s;">
+                    <button class="cta-btn bg-aero-accent text-aero-dark px-8 py-4 rounded-lg font-semibold hover:bg-aero-blue transition-all duration-300 transform hover:scale-105">
+                        <i class="fas fa-play mr-2"></i>View Demo
+                    </button>
+                    <button class="cta-btn border-2 border-aero-accent text-aero-accent px-8 py-4 rounded-lg font-semibold hover:bg-aero-accent hover:text-aero-dark transition-all duration-300 transform hover:scale-105">
+                        <i class="fas fa-cog mr-2"></i>Explore Features
+                    </button>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="grid grid-cols-2 md:grid-cols-6 gap-6 mt-16 animate-fade-in" style="animation-delay: 0.9s;">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-aero-accent counter" data-target="7">0</div>
+                        <div class="text-sm text-gray-400">Components</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-aero-accent counter" data-target="2">0</div>
+                        <div class="text-sm text-gray-400">AI Models</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-aero-accent counter" data-target="3">0</div>
+                        <div class="text-sm text-gray-400">Sensors</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-aero-accent counter" data-target="8">0</div>
+                        <div class="text-sm text-gray-400">Expressions</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-aero-accent counter" data-target="5">0</div>
+                        <div class="text-sm text-gray-400">Log Types</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-aero-accent counter" data-target="2">0</div>
+                        <div class="text-sm text-gray-400">Platforms</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="py-20 bg-aero-secondary">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6">System Architecture</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Modular design with comprehensive component integration for reliable robotic operations
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div class="component-card bg-aero-dark/50 backdrop-blur-sm p-6 rounded-xl border border-aero-accent/20 hover:border-aero-accent/50 transition-all duration-300">
+                    <div class="text-aero-accent text-3xl mb-4"><i class="fas fa-brain"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Main Controller</h3>
+                    <p class="text-gray-300 mb-3">Central orchestrator managing all subsystems and event loops</p>
+                    <div class="text-sm text-aero-accent font-mono">main.py</div>
+                </div>
+
+                <div class="component-card bg-aero-dark/50 backdrop-blur-sm p-6 rounded-xl border border-aero-accent/20 hover:border-aero-accent/50 transition-all duration-300">
+                    <div class="text-aero-accent text-3xl mb-4"><i class="fas fa-microphone"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Speech Processing</h3>
+                    <p class="text-gray-300 mb-3">Voice input/output handling with Vosk and Piper integration</p>
+                    <div class="text-sm text-aero-accent font-mono">speech_to_text.py, text_to_speech.py</div>
+                </div>
+
+                <div class="component-card bg-aero-dark/50 backdrop-blur-sm p-6 rounded-xl border border-aero-accent/20 hover:border-aero-accent/50 transition-all duration-300">
+                    <div class="text-aero-accent text-3xl mb-4"><i class="fas fa-robot"></i></div>
+                    <h3 class="text-xl font-bold mb-3">AI Processing</h3>
+                    <p class="text-gray-300 mb-3">Intelligent response generation with primary and fallback AI systems</p>
+                    <div class="text-sm text-aero-accent font-mono">openai_client.py, local_llm.py</div>
+                </div>
+
+                <div class="component-card bg-aero-dark/50 backdrop-blur-sm p-6 rounded-xl border border-aero-accent/20 hover:border-aero-accent/50 transition-all duration-300">
+                    <div class="text-aero-accent text-3xl mb-4"><i class="fas fa-car"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Motor Control</h3>
+                    <p class="text-gray-300 mb-3">4-wheel drive management with safety features and platform abstraction</p>
+                    <div class="text-sm text-aero-accent font-mono">motor_controller.py</div>
+                </div>
+
+                <div class="component-card bg-aero-dark/50 backdrop-blur-sm p-6 rounded-xl border border-aero-accent/20 hover:border-aero-accent/50 transition-all duration-300">
+                    <div class="text-aero-accent text-3xl mb-4"><i class="fas fa-radar"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Sensor Manager</h3>
+                    <p class="text-gray-300 mb-3">Ultrasonic sensor data processing and obstacle detection</p>
+                    <div class="text-sm text-aero-accent font-mono">sensors.py</div>
+                </div>
+
+                <div class="component-card bg-aero-dark/50 backdrop-blur-sm p-6 rounded-xl border border-aero-accent/20 hover:border-aero-accent/50 transition-all duration-300">
+                    <div class="text-aero-accent text-3xl mb-4"><i class="fas fa-smile"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Face Display</h3>
+                    <p class="text-gray-300 mb-3">Visual expression system using pygame and PNG images</p>
+                    <div class="text-sm text-aero-accent font-mono">face_display.py</div>
+                </div>
+            </div>
+
+            <!-- Data Flow -->
+            <div class="bg-aero-dark/30 p-8 rounded-2xl">
+                <h3 class="text-2xl font-bold mb-6 text-center">Data Flow</h3>
+                <div class="space-y-4">
+                    <div class="flow-item flex items-center justify-center bg-aero-dark/50 p-4 rounded-lg">
+                        <span class="text-gray-300">Voice Command → Speech-to-Text → AI Processing</span>
+                    </div>
+                    <div class="flow-item flex items-center justify-center bg-aero-dark/50 p-4 rounded-lg">
+                        <span class="text-gray-300">AI Response → Text-to-Speech → Audio Output</span>
+                    </div>
+                    <div class="flow-item flex items-center justify-center bg-aero-dark/50 p-4 rounded-lg">
+                        <span class="text-gray-300">Movement Commands → Motor Controller → Physical Action</span>
+                    </div>
+                    <div class="flow-item flex items-center justify-center bg-aero-dark/50 p-4 rounded-lg">
+                        <span class="text-gray-300">Sensor Data → Obstacle Detection → Navigation Decisions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-aero-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6">Advanced Features</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Cutting-edge capabilities powered by artificial intelligence and modern robotics
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card bg-gradient-to-br from-aero-secondary to-aero-dark p-8 rounded-2xl border border-aero-accent/20 hover:border-aero-accent/50 transition-all duration-500 transform hover:scale-105">
+                    <div class="text-5xl mb-6">🎤</div>
+                    <h3 class="text-2xl font-bold mb-4 text-aero-accent">Voice Interaction</h3>
+                    <p class="text-gray-300 mb-4">Advanced speech-to-text and text-to-speech capabilities using Vosk and Piper</p>
+                    <div class="text-sm text-gray-400">
+                        Continuous listening with voice activity detection, high-quality voice synthesis
+                    </div>
+                </div>
+
+                <div class="feature-card bg-gradient-to-br from-aero-secondary to-aero-dark p-8 rounded-2xl border border-aero-accent/20 hover:border-aero-accent/50 transition-all duration-500 transform hover:scale-105">
+                    <div class="text-5xl mb-6">🧠</div>
+                    <h3 class="text-2xl font-bold mb-4 text-aero-accent">AI Processing</h3>
+                    <p class="text-gray-300 mb-4">OpenAI API integration with local GGUF model fallback for intelligent responses</p>
+                    <div class="text-sm text-gray-400">
+                        Dual AI processing with automatic failover for reliable operation
+                    </div>
+                </div>
+
+                <div class="feature-card bg-gradient-to-br from-aero-secondary to-aero-dark p-8 rounded-2xl border border-aero-accent/20 hover:border-aero-accent/50 transition-all duration-500 transform hover:scale-105">
+                    <div class="text-5xl mb-6">🚗</div>
+                    <h3 class="text-2xl font-bold mb-4 text-aero-accent">4-Wheel Drive Control</h3>
+                    <p class="text-gray-300 mb-4">Precise motor control with platform-specific implementations</p>
+                    <div class="text-sm text-gray-400">
+                        Cross-platform compatibility with GPIO control and simulation modes
+                    </div>
+                </div>
+
+                <div class="feature-card bg-gradient-to-br from-aero-secondary to-aero-dark p-8 rounded-2xl border border-aero-accent/20 hover:border-aero-accent/50 transition-all duration-500 transform hover:scale-105">
+                    <div class="text-5xl mb-6">📡</div>
+                    <h3 class="text-2xl font-bold mb-4 text-aero-accent">Sensor Management</h3>
+                    <p class="text-gray-300 mb-4">3 ultrasonic sensors for comprehensive obstacle detection and navigation</p>
+                    <div class="text-sm text-gray-400">
+                        Front, left, and right distance monitoring with real-time processing
+                    </div>
+                </div>
+
+                <div class="feature-card bg-gradient-to-br from-aero-secondary to-aero-dark p-8 rounded-2xl border border-aero-accent/20 hover:border-aero-accent/50 transition-all duration-500 transform hover:scale-105">
+                    <div class="text-5xl mb-6">😊</div>
+                    <h3 class="text-2xl font-bold mb-4 text-aero-accent">Visual Feedback</h3>
+                    <p class="text-gray-300 mb-4">Dynamic face display with expressive animations using pygame</p>
+                    <div class="text-sm text-gray-400">
+                        8 different expressions for various robot states and interactions
+                    </div>
+                </div>
+
+                <div class="feature-card bg-gradient-to-br from-aero-secondary to-aero-dark p-8 rounded-2xl border border-aero-accent/20 hover:border-aero-accent/50 transition-all duration-500 transform hover:scale-105">
+                    <div class="text-5xl mb-6">📝</div>
+                    <h3 class="text-2xl font-bold mb-4 text-aero-accent">Comprehensive Logging</h3>
+                    <p class="text-gray-300 mb-4">Multi-format logging system for conversation memory and activity tracking</p>
+                    <div class="text-sm text-gray-400">
+                        JSON and text logs for conversations, movements, speech processing, and activities
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specifications Section -->
+    <section id="specs" class="py-20 bg-aero-secondary">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6">Technical Specifications</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Detailed hardware and software requirements for optimal performance
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Hardware Specs -->
+                <div class="spec-category bg-aero-dark/50 backdrop-blur-sm p-8 rounded-2xl border border-aero-accent/20">
+                    <h3 class="text-2xl font-bold mb-6 text-aero-accent flex items-center">
+                        <i class="fas fa-microchip mr-3"></i>Hardware Requirements
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="spec-item flex justify-between items-center py-3 border-b border-gray-600">
+                            <span class="text-gray-300">Platform</span>
+                            <span class="font-semibold">Raspberry Pi / Windows</span>
+                        </div>
+                        <div class="spec-item flex justify-between items-center py-3 border-b border-gray-600">
+                            <span class="text-gray-300">Motors</span>
+                            <span class="font-semibold">4-wheel drive system</span>
+                        </div>
+                        <div class="spec-item flex justify-between items-center py-3 border-b border-gray-600">
+                            <span class="text-gray-300">Sensors</span>
+                            <span class="font-semibold">3x Ultrasonic (HC-SR04)</span>
+                        </div>
+                        <div class="spec-item flex justify-between items-center py-3 border-b border-gray-600">
+                            <span class="text-gray-300">Display</span>
+                            <span class="font-semibold">Pygame-compatible screen</span>
+                        </div>
+                        <div class="spec-item flex justify-between items-center py-3">
+                            <span class="text-gray-300">Audio</span>
+                            <span class="font-semibold">Microphone & Speakers</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Software Specs -->
+                <div class="spec-category bg-aero-dark/50 backdrop-blur-sm p-8 rounded-2xl border border-aero-accent/20">
+                    <h3 class="text-2xl font-bold mb-6 text-aero-accent flex items-center">
+                        <i class="fas fa-code mr-3"></i>Software Stack
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="spec-item flex justify-between items-center py-3 border-b border-gray-600">
+                            <span class="text-gray-300">Language</span>
+                            <span class="font-semibold">Python</span>
+                        </div>
+                        <div class="spec-item flex justify-between items-center py-3 border-b border-gray-600">
+                            <span class="text-gray-300">AI Models</span>
+                            <span class="font-semibold">OpenAI API + Local GGUF</span>
+                        </div>
+                        <div class="spec-item flex justify-between items-center py-3 border-b border-gray-600">
+                            <span class="text-gray-300">Speech (STT)</span>
+                            <span class="font-semibold">Vosk (small-en-in-0.4)</span>
+                        </div>
+                        <div class="spec-item flex justify-between items-center py-3 border-b border-gray-600">
+                            <span class="text-gray-300">Speech (TTS)</span>
+                            <span class="font-semibold">Piper (en_US-amy-medium)</span>
+                        </div>
+                        <div class="spec-item flex justify-between items-center py-3">
+                            <span class="text-gray-300">Libraries</span>
+                            <span class="font-semibold">RPi.GPIO, pygame, pyaudio</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Metrics -->
+            <div class="mt-16 bg-aero-dark/50 backdrop-blur-sm p-8 rounded-2xl border border-aero-accent/20">
+                <h3 class="text-2xl font-bold mb-6 text-aero-accent text-center flex items-center justify-center">
+                    <i class="fas fa-tachometer-alt mr-3"></i>Performance Metrics
+                </h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="metric text-center">
+                        <div class="text-3xl font-bold text-aero-accent mb-2">&lt; 2s</div>
+                        <div class="text-gray-300">Response Time</div>
+                        <div class="text-sm text-gray-400">Voice to action</div>
+                    </div>
+                    <div class="metric text-center">
+                        <div class="text-3xl font-bold text-aero-accent mb-2">±2cm</div>
+                        <div class="text-gray-300">Sensor Accuracy</div>
+                        <div class="text-sm text-gray-400">Distance measurement</div>
+                    </div>
+                    <div class="metric text-center">
+                        <div class="text-3xl font-bold text-aero-accent mb-2">Low</div>
+                        <div class="text-gray-300">Memory Usage</div>
+                        <div class="text-sm text-gray-400">Pi optimized</div>
+                    </div>
+                    <div class="metric text-center">
+                        <div class="text-3xl font-bold text-aero-accent mb-2">High</div>
+                        <div class="text-gray-300">Audio Quality</div>
+                        <div class="text-sm text-gray-400">Natural TTS voice</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-aero-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6">Project Gallery</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Visual showcase of robot expressions, system components, and interactive demonstrations
+                </p>
+            </div>
+
+            <!-- Robot Expressions -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-8 text-center text-aero-accent">Robot Expressions</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+                    <div class="expression-card bg-aero-secondary p-4 rounded-lg text-center hover:bg-aero-accent/20 transition-all duration-300">
+                        <div class="text-4xl mb-2">😐</div>
+                        <div class="text-sm text-gray-300">Neutral</div>
+                    </div>
+                    <div class="expression-card bg-aero-secondary p-4 rounded-lg text-center hover:bg-aero-accent/20 transition-all duration-300">
+                        <div class="text-4xl mb-2">👂</div>
+                        <div class="text-sm text-gray-300">Hearing</div>
+                    </div>
+                    <div class="expression-card bg-aero-secondary p-4 rounded-lg text-center hover:bg-aero-accent/20 transition-all duration-300">
+                        <div class="text-4xl mb-2">🗣️</div>
+                        <div class="text-sm text-gray-300">Speaking</div>
+                    </div>
+                    <div class="expression-card bg-aero-secondary p-4 rounded-lg text-center hover:bg-aero-accent/20 transition-all duration-300">
+                        <div class="text-4xl mb-2">🤔</div>
+                        <div class="text-sm text-gray-300">Thinking</div>
+                    </div>
+                    <div class="expression-card bg-aero-secondary p-4 rounded-lg text-center hover:bg-aero-accent/20 transition-all duration-300">
+                        <div class="text-4xl mb-2">😊</div>
+                        <div class="text-sm text-gray-300">Happy</div>
+                    </div>
+                    <div class="expression-card bg-aero-secondary p-4 rounded-lg text-center hover:bg-aero-accent/20 transition-all duration-300">
+                        <div class="text-4xl mb-2">😕</div>
+                        <div class="text-sm text-gray-300">Confused</div>
+                    </div>
+                    <div class="expression-card bg-aero-secondary p-4 rounded-lg text-center hover:bg-aero-accent/20 transition-all duration-300">
+                        <div class="text-4xl mb-2">💥</div>
+                        <div class="text-sm text-gray-300">Crashed</div>
+                    </div>
+                    <div class="expression-card bg-aero-secondary p-4 rounded-lg text-center hover:bg-aero-accent/20 transition-all duration-300">
+                        <div class="text-4xl mb-2">😉</div>
+                        <div class="text-sm text-gray-300">Blink</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo Placeholder -->
+            <div class="bg-aero-secondary/50 backdrop-blur-sm p-12 rounded-2xl border border-aero-accent/20 text-center">
+                <div class="text-6xl text-aero-accent mb-6">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Interactive Demo</h3>
+                <p class="text-gray-300 mb-6">Experience the robot's capabilities through our interactive demonstration</p>
+                <button class="bg-aero-accent text-aero-dark px-8 py-3 rounded-lg font-semibold hover:bg-aero-blue transition-colors duration-300">
+                    Launch Demo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-aero-secondary">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6">About the Project</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Pioneering the future of interactive robotics with AI-powered autonomous systems
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-3xl font-bold mb-6 text-aero-accent">Project Vision</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        The AI-Powered 4-Wheel Drive Raspberry Pi Robot represents a breakthrough in accessible robotics, 
+                        combining cutting-edge artificial intelligence with practical hardware implementation. Our goal is 
+                        to create a platform that demonstrates the possibilities of modern robotics while remaining 
+                        educational and expandable.
+                    </p>
+                    <p class="text-gray-300 mb-8 leading-relaxed">
+                        This project showcases the integration of multiple AI services, real-time sensor processing, 
+                        sophisticated motor control, and comprehensive logging systems, all orchestrated through an 
+                        intuitive voice interface with expressive visual feedback.
+                    </p>
+
+                    <div class="mb-8">
+                        <h4 class="text-xl font-bold mb-4 text-aero-accent">Key Achievements</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-aero-accent mr-3"></i>
+                                Cross-platform development and deployment
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-aero-accent mr-3"></i>
+                                Dual AI processing with automatic failover
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-aero-accent mr-3"></i>
+                                Real-time obstacle detection and avoidance
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-aero-accent mr-3"></i>
+                                Natural voice interaction with visual feedback
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-aero-dark/50 backdrop-blur-sm p-8 rounded-2xl border border-aero-accent/20">
+                    <h3 class="text-2xl font-bold mb-6 text-aero-accent">Project Information</h3>
+                    <div class="space-y-4">
+                        <div class="info-item flex justify-between items-center py-2 border-b border-gray-600">
+                            <span class="text-gray-300">Version</span>
+                            <span class="font-semibold">1.0</span>
+                        </div>
+                        <div class="info-item flex justify-between items-center py-2 border-b border-gray-600">
+                            <span class="text-gray-300">Status</span>
+                            <span class="font-semibold text-aero-accent">In Development</span>
+                        </div>
+                        <div class="info-item flex justify-between items-center py-2 border-b border-gray-600">
+                            <span class="text-gray-300">License</span>
+                            <span class="font-semibold">MIT</span>
+                        </div>
+                        <div class="info-item flex justify-between items-center py-2 border-b border-gray-600">
+                            <span class="text-gray-300">Contributions</span>
+                            <span class="font-semibold">Welcome</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-gray-600">
+                        <h4 class="text-lg font-bold mb-4">Get Involved</h4>
+                        <div class="space-y-3">
+                            <a href="https://github.com/username/ai-robot-project" target="_blank" 
+                               class="flex items-center justify-between bg-aero-accent text-aero-dark px-4 py-3 rounded-lg font-semibold hover:bg-aero-blue transition-colors duration-300">
+                                <span><i class="fab fa-github mr-2"></i>View on GitHub</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="https://github.com/username/ai-robot-project/issues" target="_blank" 
+                               class="flex items-center justify-between border border-aero-accent text-aero-accent px-4 py-3 rounded-lg font-semibold hover:bg-aero-accent hover:text-aero-dark transition-all duration-300">
+                                <span><i class="fas fa-bug mr-2"></i>Report Issues</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-aero-dark py-12 border-t border-aero-accent/20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-6 md:mb-0">
+                    <div class="text-2xl font-bold text-aero-accent mb-2">
+                        <i class="fas fa-robot mr-2"></i>AI Robot Project
+                    </div>
+                    <p class="text-gray-400">Advanced Robotics Platform</p>
+                </div>
+
+                <div class="flex items-center space-x-6">
+                    <a href="https://github.com/username/ai-robot-project" target="_blank" 
+                       class="text-gray-400 hover:text-aero-accent transition-colors duration-300">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="#home" class="text-gray-400 hover:text-aero-accent transition-colors duration-300">
+                        <i class="fas fa-arrow-up text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-600 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 AI Robot Project. Licensed under MIT License.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

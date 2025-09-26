@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logging System - SARAR AI Robot</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container navbar">
+            <a href="index.html" class="nav-logo"><i class="fas fa-robot"></i> SARAR</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="architecture.html" class="nav-link">Architecture</a></li>
+                    <li><a href="features.html" class="nav-link">Features</a></li>
+                    <li><a href="hardware.html" class="nav-link">Hardware</a></li>
+                    <li><a href="logging.html" class="nav-link active">Logging</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center">
+                <a href="https://github.com/your-username/ai-robot-4wd" target="_blank" class="btn-source-code"><i class="fab fa-github"></i> GitHub</a>
+                <button class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h1>Comprehensive Logging</h1>
+                    <p>SARAR features a robust logging system that records all major activities, providing a clear and detailed history for debugging, analysis, and memory functions.</p>
+                </div>
+
+                <div class="glass-pane fade-in">
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="icon"><i class="fas fa-file-alt"></i></div>
+                            <h3>Conversation Log</h3>
+                            <p>Records all interactions with the AI, including user input, the AI's response, the source of the AI (OpenAI or local), and processing time.</p>
+                            <p class="mono">conversation_log.json</p>
+                        </div>
+                        <div class="card">
+                            <div class="icon"><i class="fas fa-car-side"></i></div>
+                            <h3>Movement Log</h3>
+                            <p>Logs all motor commands, including the direction, duration, and whether the action was successful, providing a complete history of the robot's physical actions.</p>
+                            <p class="mono">movement_log.json</p>
+                        </div>
+                        <div class="card">
+                            <div class="icon"><i class="fas fa-microphone-alt"></i></div>
+                            <h3>Speech Recognition Log</h3>
+                            <p>Contains the results from the speech-to-text engine, including the recognized text and the confidence score of the transcription.</p>
+                            <p class="mono">stt_log.json</p>
+                        </div>
+                        <div class="card">
+                            <div class="icon"><i class="fas fa-volume-up"></i></div>
+                            <h3>Speech Synthesis Log</h3>
+                            <p>Tracks all text-to-speech outputs, noting the text that was spoken and whether the audio was generated and played successfully.</p>
+                            <p class="mono">tts_log.json</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-pane fade-in">
+                    <h2>Real-time Log Viewer</h2>
+                    <p>The project includes a real-time log viewer (<code>log_viewer.py</code>) that can be launched to monitor log files as they are written. This provides immediate insight into the robot's operations during a session, which is invaluable for debugging and development.</p>
+                    <pre><code># To launch the log viewer for conversations:
+python log_viewer.py logs/conversation_log.json
+
+# To view the combined activity log:
+python log_viewer.py logs/combined_activity.txt</code></pre>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SARAR AI Project. Built for demonstration and learning.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

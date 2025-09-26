@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture - SARAR AI Robot</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container navbar">
+            <a href="index.html" class="nav-logo"><i class="fas fa-robot"></i> SARAR</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="architecture.html" class="nav-link active">Architecture</a></li>
+                    <li><a href="features.html" class="nav-link">Features</a></li>
+                    <li><a href="hardware.html" class="nav-link">Hardware</a></li>
+                    <li><a href="logging.html" class="nav-link">Logging</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center">
+                <a href="https://github.com/your-username/ai-robot-4wd" target="_blank" class="btn-source-code"><i class="fab fa-github"></i> GitHub</a>
+                <button class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h1>System Architecture</h1>
+                    <p>SARAR is built on a modular architecture that emphasizes reliability, cross-platform compatibility, and a clear separation of concerns.</p>
+                </div>
+
+                <div class="glass-pane fade-in">
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="icon"><i class="fas fa-brain"></i></div>
+                            <h3>Main Controller</h3>
+                            <p>The central orchestrator (<code>main.py</code>) that initializes all subsystems, manages the main event loop, and coordinates between components.</p>
+                            <p class="mono">RobotController</p>
+                        </div>
+                        <div class="card">
+                            <div class="icon"><i class="fas fa-microphone-alt"></i></div>
+                            <h3>Speech-to-Text</h3>
+                            <p>Converts voice input to text using a local Vosk model, featuring continuous listening and voice activity detection.</p>
+                            <p class="mono">speech_to_text.py</p>
+                        </div>
+                        <div class="card">
+                            <div class="icon"><i class="fas fa-volume-up"></i></div>
+                            <h3>Text-to-Speech</h3>
+                            <p>Converts text responses to high-quality speech using the Piper TTS engine, ensuring a natural and responsive voice.</p>
+                            <p class="mono">text_to_speech.py</p>
+                        </div>
+                        <div class="card">
+                            <div class="icon"><i class="fas fa-cogs"></i></div>
+                            <h3>AI Processor</h3>
+                            <p>Manages AI interactions, switching between the primary OpenAI API and a local GGUF model for fallback processing.</p>
+                            <p class="mono">ai_processor.py</p>
+                        </div>
+                        <div class="card">
+                            <div class="icon"><i class="fas fa-car-side"></i></div>
+                            <h3>Motor Controller</h3>
+                            <p>Abstracts motor control, handling GPIO on Raspberry Pi and simulating movement on Windows for cross-platform development.</p>
+                            <p class="mono">motor_controller.py</p>
+                        </div>
+                        <div class="card">
+                            <div class="icon"><i class="fas fa-broadcast-tower"></i></div>
+                            <h3>Sensor Manager</h3>
+                            <p>Reads and processes data from three ultrasonic sensors for real-time obstacle detection and environmental awareness.</p>
+                            <p class="mono">sensors.py</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header fade-in">
+                    <h1 style="margin-top: 5rem;">Data Flow</h1>
+                    <p>The system follows a clear, sequential data flow for handling user interaction and responding to environmental stimuli.</p>
+                </div>
+
+                <div class="glass-pane fade-in">
+                    <div class="card">
+                        <h3>Voice Command Pipeline</h3>
+                        <pre><code>User Voice -> Speech-to-Text (Vosk) -> Command Processor -> AI Processor -> Response Generation</code></pre>
+                    </div>
+                    <div class="card" style="margin-top: 1.5rem;">
+                        <h3>Response Pipeline</h3>
+                        <pre><code>AI Response -> Text-to-Speech (Piper) -> Audio Output & Face Display Update</code></pre>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SARAR AI Project. Built for demonstration and learning.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

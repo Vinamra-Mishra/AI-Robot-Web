@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SARAR - AI Robot Platform</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container navbar">
+            <a href="index.html" class="nav-logo"><i class="fas fa-robot"></i> SARAR</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="architecture.html" class="nav-link">Architecture</a></li>
+                    <li><a href="features.html" class="nav-link">Features</a></li>
+                    <li><a href="hardware.html" class="nav-link">Hardware</a></li>
+                    <li><a href="logging.html" class="nav-link">Logging</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center">
+                <a href="https://github.com/your-username/ai-robot-4wd" target="_blank" class="btn-source-code"><i class="fab fa-github"></i> GitHub</a>
+                <button class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-content fade-in">
+                <h1>The <span class="highlight">SARAR</span> Project</h1>
+                <p class="subtitle">An intelligent, voice-controlled 4WD robot with a web dashboard, autonomous navigation, and an expressive AI-driven personality. Designed for robust interaction and real-world experimentation.</p>
+                <a href="features.html" class="cta-button">Explore Features <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="glass-pane fade-in">
+                    <div class="section-header">
+                        <h1>About the Project</h1>
+                        <p>SARAR is a comprehensive platform for robotics and AI experimentation. It combines natural language interaction with a physical body that can navigate its environment, making it perfect for developers, hobbyists, and students.</p>
+                    </div>
+
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="icon"><i class="fas fa-robot"></i></div>
+                            <h3>Defined AI Persona</h3>
+                            <p>The AI is configured with a specific system prompt to act as SARAR, a physical robot, not a generic virtual assistant. This ensures a consistent and immersive user experience.</p>
+                        </div>
+                        <div class="card">
+                            <div class="icon"><i class="fas fa-cogs"></i></div>
+                            <h3>Dual AI Integration</h3>
+                            <p>Uses the OpenAI API by default, with a local GGUF model (via LLaMA.cpp) as a seamless fallback. This ensures reliability and continuous operation, even offline.</p>
+                        </div>
+                        <div class="card">
+                            <div class="icon"><i class="fas fa-sitemap"></i></div>
+                            <h3>Modular Architecture</h3>
+                            <p>The system is designed with a clean separation of concerns, making it easy to understand, maintain, and extend. Each component, from the motor controller to the AI processor, is a distinct module.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SARAR AI Project. Built for demonstration and learning.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
